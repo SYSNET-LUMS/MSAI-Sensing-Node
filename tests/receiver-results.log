@@ -1,0 +1,10 @@
+test_ble_envelope_authentication (__main__.ReceiverTests.test_ble_envelope_authentication) ... ok
+test_discontinuity_and_corruption (__main__.ReceiverTests.test_discontinuity_and_corruption) ... ok
+test_export_counts_and_reject_bad_status (__main__.ReceiverTests.test_export_counts_and_reject_bad_status) ... ok
+test_tls_auth_and_decode (__main__.ReceiverTests.test_tls_auth_and_decode) ... Executing <Task pending name='Task-17' coro=<ReceiverTests.test_tls_auth_and_decode() running at D:\MSAI-MCSA\MCSA_Node_A1_JLC_Complete_Package\MCSA_Node_A1_JLC\firmware\MSAI_Sensing_Node\tests\test_receiver.py:54> wait_for=<_OverlappedFuture pending cb=[Task.task_wakeup()] created at C:\Users\baigm\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\windows_events.py:605> cb=[_run_until_complete_cb() at C:\Users\baigm\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\base_events.py:181] created at C:\Users\baigm\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\runners.py:100> took 0.109 seconds
+ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.941s
+
+OK

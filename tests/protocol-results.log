@@ -1,0 +1,12 @@
+test_malformed (__main__.ProtocolTests.test_malformed) ... ok
+test_native_bounds (__main__.ProtocolTests.test_native_bounds) ... ok
+test_noise_and_dimensions (__main__.ProtocolTests.test_noise_and_dimensions) ... ok
+test_packet_crc (__main__.ProtocolTests.test_packet_crc) ... ok
+test_signed_extremes (__main__.ProtocolTests.test_signed_extremes) ... ok
+test_silence (__main__.ProtocolTests.test_silence) ... ok
+test_waveforms (__main__.ProtocolTests.test_waveforms) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.116s
+
+OK

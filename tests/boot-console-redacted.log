@@ -1,0 +1,120 @@
+I (198) esp_image: segment 3: paddr=00117f78 vaddr=3fca49fc sizeESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xb (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40380f1a
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x16a8
+load:0x403c8700,len:0xe88
+load:0x403cb700,len:0x3184
+entry 0x403c8948
+I (24) boot: ESP-IDF v5.5.5-dirty 2nd stage bootloader
+I (24) boot: compile time Oct 13 2026 20:02:41
+I (25) boot: Multicore bootloader
+I (25) boot: chip revision: v0.2
+I (25) boot: efuse block revision: v1.4
+I (25) qio_mode: Enabling default flash chip QIO
+I (25) boot.esp32s3: Boot SPI Speed : 80MHz
+I (26) boot.esp32s3: SPI Mode       : QIO
+I (26) boot.esp32s3: SPI Flash Size : 8MB
+I (26) boot: Enabling RNG early entropy source...
+I (26) boot: Partition Table:
+I (26) boot: ## Label            Usage          Type ST Offset   Length
+I (27) boot:  0 nvs              WiFi data        01 02 00009000 00005000
+I (27) boot:  1 otadata          OTA data         01 00 0000e000 00002000
+I (28) boot:  2 ota_0            OTA app          00 10 00010000 00330000
+I (28) boot:  3 ota_1            OTA app          00 11 00340000 00330000
+I (28) boot:  4 storage          Unknown data     01 82 00670000 00190000
+I (29) boot: End of partition table
+I (29) esp_image: segment 0: paddr=00010020 vaddr=3c0e0020 size=2dff4h (188404) map
+I (59) esp_image: segment 1: paddr=0003e01c vaddr=3fca2a00 size=01ffch (  8188) load
+I (61) esp_image: segment 2: paddr=00040020 vaddr=42000020 size=d7f50h (884560) map
+I (198) esp_image: segment 3: paddr=00117f78 vaddr=3fca49fc size=03ad4h ( 15060) load
+I (201) esp_image: segment 4: paddr=0011ba54 vaddr=40374000 size=1e92ch (125228) load
+I (226) esp_image: segment 5: paddr=0013a388 vaddr=50000000 size=00020h (    32) load
+I (238) boot: Loaded app from partition at offset 0x10000
+I (238) boot: Disabling RNG early entropy source...
+I (239) octal_psram: vendor id    : 0x0d (AP)
+I (240) octal_psram: dev id       : 0x02 (generation 3)
+I (240) octal_psram: density      : 0x03 (64 Mbit)
+I (240) octal_psram: good-die     : 0x01 (Pass)
+I (240) octal_psram: Latency      : 0x01 (Fixed)
+I (240) octal_psram: VCC          : 0x01 (3V)
+I (241) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (241) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (241) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (241) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (241) octal_psram: DriveStrength: 0x00 (1/1)
+I (242) MSPI Timing: Enter psram timing tuning
+I (243) esp_psram: Found 8MB PSRAM device
+I (243) esp_psram: Speed: 80MHz
+I (243) cpu_start: Multicore app
+I (650) esp_psram: SPI SRAM memory test OK
+I (658) cpu_start: Pro cpu start user code
+I (658) cpu_start: cpu freq: 240000000 Hz
+I (658) app_init: Application information:
+I (659) app_init: Project name:     msai_sensing_node
+I (659) app_init: App version:      0.1.0-bench
+I (659) app_init: Compile time:     Oct 13 2026 20:13:06
+I (659) app_init: ELF file SHA256:  8b797981e...
+I (659) app_init: ESP-IDF:          v5.5.5-dirty
+I (659) efuse_init: Min chip rev:     v0.0
+I (660) efuse_init: Max chip rev:     v0.99 
+I (660) efuse_init: Chip rev:         v0.2
+I (660) heap_init: Initializing. RAM available for dynamic allocation:
+I (660) heap_init: At 3FCAD700 len 0003C010 (240 KiB): RAM
+I (660) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (660) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (661) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (661) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator
+I (662) spi_flash: detected chip: generic
+I (662) spi_flash: flash io: qio
+I (662) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (662) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (0) main_task: Started on CPU1
+I (0) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1) main_task: Calling app_main()
+
+MSAI NODE 38F5F090A994 | setup hotspot MSAI-90A994 | setup code [private]
+Setup: http://192.168.4.1/ or http://msai-90A994.local/ on the LAN
+I (10) pp: pp rom version: e7ae62f
+I (10) net80211: net80211 rom version: e7ae62f
+I (12) wifi:wifi driver task: 3fced564, prio:23, stack:6656, core=0
+I (692) wifi:wifi firmware version: b9f67df
+I (693) wifi:wifi certification version: v7.0
+I (693) wifi:config NVS flash: enabled
+I (693) wifi:config nano formatting: disabled
+I (693) wifi:Init data frame dynamic rx buffer num: 32
+I (693) wifi:Init static rx mgmt buffer num: 5
+I (693) wifi:Init management short buffer num: 32
+I (694) wifi:Init static tx buffer num: 16
+I (694) wifi:Init tx cache buffer num: 32
+I (694) wifi:Init static tx FG buffer num: 2
+I (695) wifi:Init static rx buffer size: 1600
+I (695) wifi:Init static rx buffer num: 16
+I (695) wifi:Init dynamic rx buffer num: 32
+I (696) wifi_init: rx ba win: 16
+I (696) wifi_init: accept mbox: 6
+I (696) wifi_init: tcpip mbox: 32
+I (696) wifi_init: udp mbox: 6
+I (696) wifi_init: tcp mbox: 6
+I (696) wifi_init: tcp tx win: 115200
+I (696) wifi_init: tcp rx win: 65535
+I (696) wifi_init: tcp mss: 1440
+I (697) wifi_init: WiFi/LWIP prefer SPIRAM
+I (697) wifi_init: WiFi IRAM OP enabled
+I (697) wifi_init: WiFi RX IRAM OP enabled
+I (743) phy_init: phy_version 712,87e8c20e,Apr 13 2026,18:51:10
+I (779) wifi:mode : sta (94:a9:90:f0:f5:38) + softAP (94:a9:90:f0:f5:39)
+I (779) wifi:enable tsf
+I (781) wifi:Total power save buffer number: 8
+I (782) wifi:Init max length of beacon: 752/752
+I (782) wifi:Init max length of beacon: 752/752
+I (782) wifi:Set ps type: 0, coexist: 0
+
+I (783) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1
+I (806) esp_eth.netif.netif_glue: 94:a9:90:f0:f5:3b
+I (807) esp_eth.netif.netif_glue: ethernet attached to netif
+I (818) mdns_mem: mDNS task will be created from internal RAM
+I (821) main_task: Returned from app_main()
+NODE_STATUS configured=0 receiver=0 running=0 fault=0 selectors=0 feedback=0 ethernet=0.0.0.0 wifi=0.0.0.0 blocks=0

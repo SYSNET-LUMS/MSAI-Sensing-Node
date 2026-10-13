@@ -1,0 +1,17 @@
+ESP-IDF 5.5.5: Espressif Systems, Apache-2.0; contains components with their own
+licenses. Upstream source and component licenses:
+https://github.com/espressif/esp-idf/tree/v5.5.5
+
+mDNS component 1.14.0: Espressif Systems, Apache-2.0.
+Resolved component hash/version are in dependencies.lock.
+https://components.espressif.com/components/espressif/mdns/versions/1.14.0
+
+esptool.exe 5.3.1: official Espressif packaged tool, GPL-2.0-or-later.
+Its license is included as release/LICENSE-esptool.txt.
+Upstream source/releases: https://github.com/espressif/esptool
+
+Python receiver dependencies cryptography and bleak are installed from PyPI;
+their upstream licenses are included with the installed distributions.
+
+Brand colours are from the MultiSensor AI public website. The HTML is locally
+implemented and uses no remote scripts, fonts or images.
