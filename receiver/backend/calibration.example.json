@@ -1,0 +1,21 @@
+{
+  "devices": {
+    "38F5F090A994": {
+      "name": "Motor sensing node",
+      "profiles": {
+        "0": {
+          "channels": {
+            "0": {"unit": "A", "units_per_count": null, "offset_counts": 0, "verified": false},
+            "1": {"unit": "A", "units_per_count": null, "offset_counts": 0, "verified": false},
+            "2": {"unit": "A", "units_per_count": null, "offset_counts": 0, "verified": false},
+            "3": {"unit": "A", "units_per_count": null, "offset_counts": 0, "verified": false},
+            "4": {"unit": "V", "units_per_count": null, "offset_counts": 0, "verified": false},
+            "5": {"unit": "V", "units_per_count": null, "offset_counts": 0, "verified": false},
+            "6": {"unit": "V", "units_per_count": null, "offset_counts": 0, "verified": false},
+            "7": {"unit": "mV", "units_per_count": null, "offset_counts": 0, "verified": false}
+          }
+        }
+      }
+    }
+  }
+}

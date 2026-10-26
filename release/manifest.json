@@ -1,43 +1,11 @@
 {
-  "built_utc": "2026-10-13T15:20:26.9523119Z",
-  "target": "esp32s3",
-  "status": "Bench build; see VALIDATION.txt",
-  "files": [
-    {
-      "name": "bootloader.bin",
-      "bytes": 22288,
-      "sha256": "8fc7887ce62e8f8165cb4bdb3d2ab11e4579c6eab8f6e6e911249c491807dfac"
-    },
-    {
-      "name": "partition-table.bin",
-      "bytes": 3072,
-      "sha256": "c74cd8928c722b7d9e89e6bd1cccf028996dc35563bb97e9cf7ce693d187a559"
-    },
-    {
-      "name": "ota_data_initial.bin",
-      "bytes": 8192,
-      "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
-    },
-    {
-      "name": "msai_sensing_node.bin",
-      "bytes": 1221584,
-      "sha256": "c399df363d2182de6fc6c0a07ad0bbf8879c47f3f8b17e72675789fdb81b2c87"
-    },
-    {
-      "name": "esptool.exe",
-      "bytes": 14323136,
-      "sha256": "a939e28fe2fbb53e65e46f0246a4d71b9fd6c052ef0e046182df4a4fe8bec946"
-    }
-  ],
-  "version": "0.1.0-bench",
-  "idf": "5.5.5",
   "sources": [
     {
-      "sha256": "59c8396417aeb94794d482994172d3380d16a85ab9d3a30a2e3d18e1002a0b29",
+      "sha256": "de9d0d490cbcf87ec8ae9cd77ba98c47d6e7eb53e5006eaf670c0c1285b434c6",
       "name": "main/acquisition.cpp"
     },
     {
-      "sha256": "df5f4f8f5611ce3a0c0511d56a8f9ef9b52f039653bd87d867960906afe7f468",
+      "sha256": "2993d55b3ba552841848757c5ae93eb91e7f7d230916bc403c1d0a43c6083a67",
       "name": "main/ble_transport.cpp"
     },
     {
@@ -49,11 +17,11 @@
       "name": "main/calibration_config.h"
     },
     {
-      "sha256": "e09438f64cc75a5318b0fbb8e7cceb6705ce5b63ed88032e85e2e69b8edfeaab",
+      "sha256": "f55447ca383c9d1c5be0ddca80f5f439a3d8631d0f56b4464385c4523a07466e",
       "name": "main/CMakeLists.txt"
     },
     {
-      "sha256": "86f218f968ac4c108ace9f8aa1f5915109cdf838dd0d8b799571f0ad271ddf56",
+      "sha256": "01fd13ad824a9b61702aaeb8696fb341d78112491e4789ee4330deff7a9c08ff",
       "name": "main/codec.cpp"
     },
     {
@@ -61,8 +29,12 @@
       "name": "main/codec.h"
     },
     {
-      "sha256": "26261ef8e52371c66e54eb455c4ab3d42d70d6c3bd0964d01a198e82083b7573",
+      "sha256": "a621b29ca2fdd285df34c455fa45d1a62d1146ab079b27b7f987da4f2f883f61",
       "name": "main/configuration.cpp"
+    },
+    {
+      "sha256": "dd7d650f3ba422945f09ff01aad0b3b704da361182f8071cba3c8766aab923c6",
+      "name": "main/deadline_recovery.h"
     },
     {
       "sha256": "bf23f9285b4538e6173acc554577df3b309d63d8eee004f744f8d2d2443a6141",
@@ -73,19 +45,19 @@
       "name": "main/idf_component.yml"
     },
     {
-      "sha256": "adb9b587b19f522a50da93978a4af7f5b7b0be106d448e56f3e66998fc1b3ee6",
+      "sha256": "31ac1fd336f6f4f651cef85ab32040d5872ea5e09b41c58028a7897d437fc5d7",
       "name": "main/main.cpp"
     },
     {
-      "sha256": "09526962683876d9294b0ba5e9fca1258b8dcd26977b84de886fb6826b65f7b8",
+      "sha256": "a3453856f0a0850fe78435d2ec47ac300db86f808dd93cab1f374236d82a1db4",
       "name": "main/network.cpp"
     },
     {
-      "sha256": "c947321ef612a7445da8a55aad69a3f09299aa4a7e04df599e181820d09ace0f",
+      "sha256": "b63a6e9d0cc60b162743503d342fc4da097d16aba1e1cc721bdcf73c6580f9f2",
       "name": "main/node.h"
     },
     {
-      "sha256": "e4400b82587f97b21693ec17b9b3a174a1f91c1da95e37801b29ad52284c079c",
+      "sha256": "a6aa8b02f1212119e94e630dc3d551bc82363130c8a574d330055836b2becca4",
       "name": "main/portal.cpp"
     },
     {
@@ -93,19 +65,27 @@
       "name": "main/resampler.h"
     },
     {
-      "sha256": "57e790eadb2a270e0be182539b5e367e619ff5e5dc123b1bbc502116c89e0e63",
+      "sha256": "e78539bdea717e61ca929aafdfcf285afff988b3a75a26377061def0470cf815",
+      "name": "main/reset_button.h"
+    },
+    {
+      "sha256": "a528afd4be2f03bb2deadbb9fc49610a70e48f00744932e63742094b2fb085d4",
       "name": "main/transport.cpp"
     },
     {
-      "sha256": "906d1d240c3970f20663320df9dbf4f1deb80365328ed72cd1af97cb739e77da",
+      "sha256": "7dd773abdc4e61259086f6087b3edb389cc2c17473ab64e0d45daa3b917f34f9",
       "name": "main/web/index.html"
     },
     {
-      "sha256": "86107bda7b4f5dbc63aa5aba86edb67bfdabe96a4ce25336a8e6c3eb6f1e5d6a",
+      "sha256": "2819ffe5cbbe7f22c4fb03ff873d19829f673f8b91083cc66a100578d9dd3e33",
+      "name": "main/web/logo.png"
+    },
+    {
+      "sha256": "33689b47f5c3040f74f360d4c8599e7e13c64101ddc22c99b36bad72aef94360",
       "name": "CMakeLists.txt"
     },
     {
-      "sha256": "baab4813210945dfe6cc8ccfa894cd51c3448d8ff822a2b309ea0bf40aef5bcb",
+      "sha256": "b557060b4c11fba1a6f1fdf2af79a64374234961729b30aaea910f04ebb5255e",
       "name": "sdkconfig.defaults"
     },
     {
@@ -117,9 +97,41 @@
       "name": "dependencies.lock"
     },
     {
-      "sha256": "ee259b8bfca5deadacc61b0d2afa563338c45b977cf8febaa383ef96c13205f1",
+      "sha256": "2f273f62d68b19077fadd493be0d43139d3dc18e19e653fb43c9976e276c15d9",
       "name": "sdkconfig"
     }
   ],
-  "hardware": "MCSA R4"
+  "built_utc": "2026-10-19T12:57:19.866273+00:00",
+  "target": "esp32s3",
+  "hardware": "MCSA R4",
+  "files": [
+    {
+      "sha256": "de9a99dead8ab9d4675f37d06adbafd1bb3ef75345e6c9b8941ee1c05485a9cc",
+      "bytes": 22288,
+      "name": "bootloader.bin"
+    },
+    {
+      "sha256": "c74cd8928c722b7d9e89e6bd1cccf028996dc35563bb97e9cf7ce693d187a559",
+      "bytes": 3072,
+      "name": "partition-table.bin"
+    },
+    {
+      "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+      "bytes": 8192,
+      "name": "ota_data_initial.bin"
+    },
+    {
+      "sha256": "f649d044913e974985758065c3f32955c32db632703339d9f9713338f0fa9568",
+      "bytes": 1222144,
+      "name": "msai_sensing_node.bin"
+    },
+    {
+      "sha256": "a939e28fe2fbb53e65e46f0246a4d71b9fd6c052ef0e046182df4a4fe8bec946",
+      "bytes": 14323136,
+      "name": "esptool.exe"
+    }
+  ],
+  "idf": "5.5.5",
+  "status": "Bench build; see README.txt in the package root",
+  "version": "0.1.21-wifi-ui"
 }

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MCSA · Node setup</title>
+<style>
+:root{font:15px/1.5 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:#161f46;background:#eaebef;--blue:#2d44e8;--yellow:#ffcf00;--navy:#161f46;--muted:#626d87;--line:#dce0ec}
+*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,.choice{cursor:pointer}a{color:var(--blue);text-underline-offset:3px}
+.shell{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:226px minmax(0,1fr);gap:36px;padding:44px 26px}
+.logo{display:block;width:226px;max-width:100%;height:auto;margin:0 auto 28px}
+.steps{list-style:none;margin:0;padding:10px;background:var(--navy);color:#c9cfe3;border-radius:0}
+.steps li{display:flex;align-items:center;gap:12px;padding:16px 13px;font-size:14px;border-radius:0;margin:4px 0;transition:background .15s}
+.steps span{display:grid;place-items:center;width:28px;height:28px;border:1px solid #657096;border-radius:0;font-size:11px}
+.steps .active{background:var(--blue);color:#fff}.steps .active span{color:var(--navy);background:var(--yellow);border-color:var(--yellow)}
+.heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px;padding:22px 26px;background:var(--yellow);border-radius:0}
+h1{font-size:28px;font-weight:650;letter-spacing:-.8px;margin:0}.device{font-size:12px;font-weight:600;padding:7px 11px;border:1px solid #161f4626;border-radius:0;background:#ffffff40}
+section{background:#fff;padding:28px;border:1px solid #fff;border-radius:0;box-shadow:0 8px 28px #161f4608}h2{font-size:21px;font-weight:600;margin:0 0 22px;letter-spacing:-.3px}
+label{display:block;font-size:13px;font-weight:600;margin:19px 0 7px}input,select{width:100%;padding:12px 14px;border:1px solid #bdc5d8;border-radius:0;background:#fff;color:var(--navy);min-width:0}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.choices{display:flex;gap:10px}.choice{flex:1;display:flex;align-items:center;justify-content:center;gap:9px;margin:0;padding:17px 10px;border:1px solid var(--line);border-radius:0;font-size:14px;font-weight:550;transition:background .15s,border-color .15s}
+.choice:hover{border-color:var(--blue);background:#f5f6ff}.choice:has(input:checked){background:#eef0ff;border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}.choice input{width:16px;height:16px;margin:0;accent-color:var(--blue)}
+button{border:1px solid var(--line);padding:11px 20px;border-radius:0;color:var(--navy);background:#fff;font-weight:600;transition:background .15s,box-shadow .15s,transform .15s;min-height:44px}
+button:hover:enabled{background:#f0f2ff;border-color:#9ba6e9}button:active:enabled{transform:translateY(1px)}button.primary{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 3px 8px #2d44e81a}button.primary:hover:enabled{background:#2036cc}
+button:disabled,button.primary:disabled{background:#dce0e7;border-color:#dce0e7;color:#737c8e;box-shadow:none;opacity:1;cursor:not-allowed}.buttons{display:flex;justify-content:space-between;gap:12px;margin-top:26px;padding-top:22px;border-top:1px solid #edf0f6}.buttons .primary{margin-left:auto}
+#join.wifi-connected:disabled{background:var(--blue);border-color:var(--blue);color:#fff;cursor:default}
+.hint{font-size:13px;color:var(--muted);margin:14px 0 0;overflow-wrap:anywhere}.error{background:#fff1ef;border:1px solid #eed1cc;border-radius:0;color:#862519;margin-top:18px;padding:14px;font-size:14px}
+.status{background:#f3f5ff;border:1px solid #dfe4ff;border-radius:0;padding:18px;overflow-wrap:anywhere}.status.good{background:#fff9db;border-color:#f1dfa0}.status.good:before{content:'●';color:var(--blue);margin-right:9px}
+#changeSettings{margin-top:22px}#bleDestination{margin:0;color:var(--blue)}.network-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 0}.network-heading h3{font-size:14px;font-weight:600;margin:0}.scan-button{display:flex;gap:8px;align-items:center;padding:8px 12px;min-height:38px;font-size:13px;color:var(--blue)}
+.scan-icon{font-size:19px;line-height:1}.scanning .scan-icon{animation:turn 1s linear infinite}.scan-state{min-height:20px;font-size:12px;margin:10px 0 12px;color:var(--muted)}.scan-state.complete{color:var(--blue)}
+.networks{display:grid;gap:8px;max-height:280px;overflow:auto;padding:3px;margin:-3px}.network{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:0;margin:0;cursor:pointer;font-weight:400;transition:border-color .15s,background .15s}.network:hover{border-color:#9ba6e9}.network:has(input:checked){border-color:var(--blue);background:#f3f5ff}.network input{flex:0 0 16px;width:16px;height:16px;accent-color:var(--blue);margin:0}.network-name{min-width:0;flex:1}.network-name strong{display:block;font-size:14px;font-weight:550;overflow-wrap:anywhere}.network-name small{font-size:11px;color:var(--muted)}
+.network-signal{flex-shrink:0;display:flex;align-items:center;gap:9px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}.bars{display:flex;align-items:flex-end;gap:3px;height:19px}.bars i{width:4px;border-radius:0;background:#cbd1e2}.bars i:nth-child(1){height:5px}.bars i:nth-child(2){height:9px}.bars i:nth-child(3){height:14px}.bars i:nth-child(4){height:19px}.bars i.on{background:var(--blue)}
+.choice input,.network input{appearance:none;padding:0;border:1px solid #8a94ac;border-radius:50%;background:#fff}.choice input:checked,.network input:checked{background:var(--blue);box-shadow:inset 0 0 0 3px #fff}.wifi-connect{display:flex;align-items:center;gap:14px;margin-top:16px}.wifi-connect .hint{margin:0}.address-link{display:inline-block;overflow-wrap:anywhere}.recovery{margin-top:22px;font-size:12px;color:var(--muted);max-width:38em}
+[hidden]{display:none!important}#message:empty{display:none}@keyframes turn{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:720px){.shell{display:block;padding:24px 16px}.logo{width:164px;margin-bottom:20px}.steps{display:flex;justify-content:space-between;padding:6px;margin-bottom:22px;border-radius:0}.steps li{gap:7px;padding:10px 8px;font-size:12px;margin:0}.steps span{width:23px;height:23px;font-size:10px}.heading{padding:18px;margin-bottom:16px;border-radius:0}h1{font-size:24px}.device{font-size:11px}section{padding:22px;border-radius:0}.choices{gap:8px}.choice{font-size:13px;padding:15px 7px}}
+@media(max-width:390px){.steps li{gap:5px;padding:10px 5px;font-size:11px}section{padding:18px}.heading{gap:8px}.network{padding:12px 10px;gap:9px}.network-signal{gap:6px}.network-name strong{font-size:13px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside aria-label="Setup steps">
+    <img class="logo" src="/logo.png" width="277" height="184" alt="MultiSensor AI · EdgeAI Innovation Lab · LUMS">
+    <ol class="steps">
+      <li id="step1" class="active" aria-current="step"><span>01</span>Connection</li>
+      <li id="step2"><span>02</span>Destination</li>
+      <li id="step3"><span>03</span>Ready</li>
+    </ol>
+  </aside>
+  <main>
+    <header class="heading"><h1>Node setup</h1><small class="device" id="device">SENSING NODE</small></header>
+    <section id="connection">
+      <h2>Connection</h2>
+      <div class="choices" role="radiogroup" aria-label="Connection">
+        <label class="choice"><input type="radio" name="link" value="wifi">Wi-Fi</label>
+        <label class="choice"><input type="radio" name="link" value="ethernet" checked>Ethernet</label>
+        <label class="choice"><input type="radio" name="link" value="ble">BLE</label>
+      </div>
+      <div id="wifi" hidden>
+        <div class="network-heading"><h3>Available networks</h3><button id="scan" class="scan-button" type="button"><span class="scan-icon" aria-hidden="true">↻</span><span id="scanLabel">Scan</span></button></div>
+        <p id="scanState" class="scan-state" role="status" aria-live="polite">Scan to find nearby Wi-Fi.</p>
+        <div id="networks" class="networks" role="radiogroup" aria-label="Available Wi-Fi networks" aria-busy="false"></div>
+        <input id="ssid" type="hidden">
+        <div id="passwordField" hidden><label for="password">Wi-Fi password</label><input id="password" type="password" maxlength="64" autocomplete="new-password"></div>
+        <div class="wifi-connect"><button id="join" type="button" disabled>Connect</button><p class="hint" id="wifiState" role="status"></p></div>
+      </div>
+      <div id="ethernet"><p class="hint" id="ethernetState">Connect the Ethernet cable.</p></div>
+      <div id="bleHint" hidden>
+        <div class="network-heading"><h3>Nearby BLE devices</h3><button id="bleScan" class="scan-button" type="button"><span class="scan-icon" aria-hidden="true">↻</span><span id="bleScanLabel">Scan</span></button></div>
+        <p id="bleScanState" class="scan-state" role="status" aria-live="polite">Scan to find nearby advertising devices.</p>
+        <div id="bleDevices" class="networks" role="radiogroup" aria-label="Nearby BLE devices" aria-busy="false"></div>
+        <p class="hint">Only compatible MCSA receivers can receive sensor data. Start the receiver’s USB dashboard before selecting it.</p>
+        <div class="wifi-connect"><button id="bleConfirm" type="button" disabled>Confirm receiver</button><p id="bleSelection" class="hint" role="status"></p></div>
+      </div>
+      <div class="buttons"><button id="next" class="primary">Continue <span aria-hidden="true">→</span></button></div>
+    </section>
+    <section id="destination" hidden>
+      <h2>Destination</h2>
+      <div id="destChoices" class="choices" role="radiogroup" aria-label="Destination">
+        <label class="choice"><input type="radio" name="destination" value="local" checked>Local gateway</label>
+        <label class="choice"><input type="radio" name="destination" value="cloud">Cloud / remote</label>
+      </div>
+      <p id="bleDestination" hidden>Local base station</p>
+      <div id="endpoint">
+        <label for="host">Receiver IP address</label><input id="host" placeholder="192.168.1.100" maxlength="253" autocomplete="off">
+        <label for="port">Port</label><input id="port" type="number" min="1" max="65535" value="5443">
+      </div>
+      <div id="bleRate" hidden>
+        <label for="rate">Samples per second / channel</label>
+        <select id="rate"><option value="1000">1,000</option><option value="2000">2,000</option><option value="10000">10,000</option></select>
+      </div>
+      <div class="buttons"><button id="back">Back</button><button id="save" class="primary">Save &amp; start</button></div>
+    </section>
+    <section id="ready" hidden>
+      <h2 id="readyTitle">Connecting to receiver</h2>
+      <div class="status" id="live" role="status">Settings saved. Restarting…</div>
+      <p class="hint">If the hotspot closes, reconnect to your normal network.</p>
+      <p class="hint">LAN setup · <a class="address-link" id="lanUrl"></a></p><button id="changeSettings" hidden>Change settings</button>
+    </section>
+    <div id="message" class="error" role="alert"></div>
+  </main>
+</div>
+<script>
+const $=id=>document.getElementById(id);let state={},saved=false,joined='',scanning=false,connecting=false,scanAttempted=false;
+let bleScanning=false,bleConfirming=false,bleAttempted=false,bleSelected=null,bleConfirmed='';
+const link=()=>document.querySelector('[name=link]:checked').value;
+function message(t=''){$('message').textContent=t}
+async function api(path,data){const r=await fetch('/api/'+path,{method:data?'POST':'GET',headers:{'Content-Type':'application/json','X-Node-Setup':'1'},body:data?JSON.stringify(data):undefined});const j=await r.json();if(!r.ok)throw Error(j.error||'Please try again');return j}
+function step(n){for(const [i,id]of ['connection','destination','ready'].entries()){$(id).hidden=i+1!==n;const item=$('step'+(i+1));item.classList.toggle('active',i+1===n);if(i+1===n)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current')}message()}
+function updateLink(){const l=link(),ble=l==='ble';$('wifi').hidden=l!=='wifi';$('ethernet').hidden=l!=='ethernet';$('bleHint').hidden=!ble;$('destChoices').hidden=ble;$('bleDestination').hidden=!ble;$('endpoint').hidden=ble;$('bleRate').hidden=!ble;if(ble)document.querySelector('[name=destination][value=local]').checked=true;message();wifiControls();if(l==='wifi'&&!scanAttempted)scanNetworks();if(ble&&!bleAttempted)scanBle()}
+document.querySelectorAll('[name=link]').forEach(x=>x.onchange=updateLink);
+async function action(button,fn){button.disabled=true;message();try{await fn()}catch(e){message(e.message)}finally{button.disabled=false}}
+function wifiControls(){const busy=scanning||connecting||bleScanning||bleConfirming,connected=!!joined&&joined===$('ssid').value;$('scan').disabled=busy;$('join').disabled=busy||!$('ssid').value||connected;$('join').textContent=connecting?'Connecting…':connected?'Connected':'Connect';$('join').classList.toggle('wifi-connected',connected);$('password').disabled=busy;$('bleScan').disabled=busy;$('bleConfirm').disabled=busy||!bleSelected||bleConfirmed===bleSelected.address;$('next').disabled=busy||(link()==='wifi'&&!connected)||(link()==='ble'&&(!bleConfirmed||bleConfirmed!==bleSelected?.address));document.querySelectorAll('[name=network]').forEach(x=>x.disabled=busy);document.querySelectorAll('[name=bleDevice]').forEach(x=>x.disabled=busy||x.dataset.available!=='1')}
+function syncWifiState(){if(connecting)return;const previous=joined;joined=state.wifi_ip&&state.wifi_ip!=='0.0.0.0'&&state.wifi_ssid===$('ssid').value?state.wifi_ssid:'';if(joined)$('wifiState').textContent='Connected · '+state.wifi_ip;else if(previous)$('wifiState').textContent='Disconnected · connect again'}
+function chooseNetwork(n){if($('ssid').value!==n.ssid){joined='';$('password').value='';$('wifiState').textContent=''}$('ssid').value=n.ssid;$('passwordField').hidden=!n.secured;if(!n.secured){$('password').value='';$('wifiState').textContent='Open network'}syncWifiState();wifiControls()}
+function showNetworks(networks){
+  const selected=$('ssid').value,unique=new Map();
+  for(const n of [...networks].filter(n=>n.ssid&&Number.isFinite(n.rssi)).sort((a,b)=>b.rssi-a.rssi))if(!unique.has(n.ssid))unique.set(n.ssid,n);
+  $('networks').replaceChildren();
+  for(const n of unique.values()){
+    const row=document.createElement('label');row.className='network';
+    const input=document.createElement('input');input.type='radio';input.name='network';input.value=n.ssid;input.checked=n.ssid===selected;input.onchange=()=>chooseNetwork(n);
+    const name=document.createElement('span');name.className='network-name';const title=document.createElement('strong');title.textContent=n.ssid;const detail=document.createElement('small');detail.textContent=n.secured?'Secured':'Open network';name.append(title,detail);
+    const signal=document.createElement('span');signal.className='network-signal';const bars=document.createElement('span');bars.className='bars';const level=n.rssi>=-55?4:n.rssi>=-67?3:n.rssi>=-75?2:1;bars.setAttribute('role','img');bars.setAttribute('aria-label',level+' of 4 signal bars');for(let i=0;i<4;i++){const bar=document.createElement('i');if(i<level)bar.className='on';bars.append(bar)}const value=document.createElement('span');value.textContent=n.rssi+' dBm';signal.append(bars,value);
+    row.append(input,name,signal);$('networks').append(row);
+  }
+  if(unique.has(selected))chooseNetwork(unique.get(selected));else{$('ssid').value='';joined='';$('password').value='';$('passwordField').hidden=true;$('wifiState').textContent=''}
+  return unique.size;
+}
+async function scanNetworks(){
+  if(scanning||connecting||bleScanning||bleConfirming)return;scanning=true;scanAttempted=true;message();wifiControls();$('scan').classList.add('scanning');$('scanLabel').textContent='Scanning…';$('scanState').classList.remove('complete');$('scanState').textContent='Scanning for nearby networks…';$('networks').setAttribute('aria-busy','true');$('networks').hidden=true;
+  try{const count=showNetworks(await api('scan'));$('scanState').textContent=count?'Scan complete · '+count+' network'+(count===1?'':'s') :'Scan complete · no networks found. Try again.';$('scanState').classList.add('complete')}
+  catch(e){$('scanState').textContent='Scan failed · try again.';message(e.message)}
+  finally{scanning=false;$('scan').classList.remove('scanning');$('scanLabel').textContent='Scan again';$('networks').setAttribute('aria-busy','false');$('networks').hidden=false;wifiControls()}
+}
+$('scan').onclick=scanNetworks;
+function showBle(devices){
+  $('bleDevices').replaceChildren();
+  for(const d of [...devices].sort((a,b)=>Number(b.compatible)-Number(a.compatible)||b.rssi-a.rssi)){
+    const available=d.compatible&&d.ready;
+    const row=document.createElement('label');row.className='network';if(!available){row.style.opacity='.65';row.style.cursor='default'}
+    const input=document.createElement('input');input.type='radio';input.name='bleDevice';input.value=d.address;input.dataset.available=available?'1':'0';input.disabled=!available||bleScanning;input.checked=bleSelected?.address===d.address;
+    input.onchange=()=>{bleSelected=d;bleConfirmed='';$('bleSelection').textContent='Selected: '+d.name+'. Confirm to continue.';wifiControls()};
+    const name=document.createElement('span');name.className='network-name';const title=document.createElement('strong');title.textContent=d.name;const detail=document.createElement('small');detail.textContent=d.address+' · '+(available?'Compatible receiver':d.compatible?'Receiver offline · start USB dashboard':'Not a compatible MCSA receiver');name.append(title,detail);
+    const signal=document.createElement('span');signal.className='network-signal';signal.textContent=d.rssi+' dBm';row.append(input,name,signal);$('bleDevices').append(row);
+  }
+}
+async function scanBle(){
+  if(scanning||connecting||bleScanning||bleConfirming)return;
+  bleScanning=true;bleAttempted=true;bleSelected=null;bleConfirmed='';$('bleSelection').textContent='';message();wifiControls();$('bleScan').classList.add('scanning');$('bleScanLabel').textContent='Scanning…';$('bleScanState').textContent='Scanning for nearby advertising devices…';$('bleDevices').replaceChildren();$('bleDevices').setAttribute('aria-busy','true');
+  try{
+    let result=await api('ble-devices',{});const deadline=Date.now()+12000;
+    while(result.scanning&&Date.now()<deadline){showBle(result.devices);await new Promise(r=>setTimeout(r,500));result=await api('ble-devices')}
+    if(result.scanning)throw Error('Scan timed out. Please try again.');
+    showBle(result.devices);const count=result.devices.length,ready=result.devices.filter(d=>d.compatible&&d.ready).length;
+    $('bleScanState').textContent=count?`Scan complete · ${count} devices · ${ready} available receiver${ready===1?'':'s'}`:'No advertising BLE devices found. Power on the receiver and scan again.';
+  }catch(e){$('bleScanState').textContent='Scan failed · try again.';message(e.message)}
+  finally{bleScanning=false;$('bleScan').classList.remove('scanning');$('bleScanLabel').textContent='Scan again';$('bleDevices').setAttribute('aria-busy','false');wifiControls()}
+}
+$('bleScan').onclick=scanBle;
+$('bleConfirm').onclick=async()=>{
+  if(!bleSelected||bleScanning||bleConfirming)return;
+  bleConfirming=true;wifiControls();message();const selected=bleSelected;
+  try{await api('ble-confirm',{address:selected.address});bleConfirmed=selected.address;$('bleSelection').textContent='Confirmed: '+selected.name;$('bleDestination').textContent='Receiver: '+selected.name+' · '+selected.address}
+  catch(e){bleConfirmed='';message(e.message)}finally{bleConfirming=false;wifiControls()}
+};
+$('join').onclick=async()=>{
+  if(connecting||scanning||bleScanning||bleConfirming||!$('ssid').value||joined===$('ssid').value)return;connecting=true;joined='';message();wifiControls();$('wifiState').textContent='';const ssid=$('ssid').value;
+  try{await api('connect',{ssid,password:$('password').value});for(let i=0;i<25;i++){await new Promise(r=>setTimeout(r,1000));try{const current=await api('status');if(current.wifi_ip&&current.wifi_ip!=='0.0.0.0'&&current.wifi_ssid===ssid){state=current;joined=ssid;$('wifiState').textContent='Connected · '+current.wifi_ip;return}}catch{}}throw Error('Connection not confirmed. Check the password and try again.')}
+  catch(e){$('wifiState').textContent='Not connected';message(e.message)}
+  finally{connecting=false;wifiControls()}
+};
+$('next').onclick=()=>{message();if(link()==='wifi'&&(connecting||!joined||joined!==$('ssid').value))return message('Connect to your Wi-Fi network first.');if(link()==='ble'&&(!bleConfirmed||bleConfirmed!==bleSelected?.address))return message('Select and confirm an available BLE receiver first.');if(link()==='ethernet'&&(!state.ethernet_ip||state.ethernet_ip==='0.0.0.0'))return message('Connect Ethernet and wait for an IP address.');step(2)};
+$('back').onclick=()=>step(1);
+$('save').onclick=()=>action($('save'),async()=>{const l=link(),host=$('host').value.trim(),port=Number($('port').value);if(l==='ble'&&(!bleConfirmed||bleConfirmed!==bleSelected?.address))throw Error('Confirm a BLE receiver first.');if(l!=='ble'&&!host)throw Error('Enter the receiver IP address.');if(l!=='ble'&&(!Number.isInteger(port)||port<1||port>65535))throw Error('Enter a port from 1 to 65535.');await api('settings',{link:l,destination:l==='ble'?'local':document.querySelector('[name=destination]:checked').value,ssid:$('ssid').value,wifi_password:$('password').value,host,port,rate:l==='ble'?Number($('rate').value):10000,ble_receiver:l==='ble'?bleConfirmed:''});saved=true;step(3)});
+let editing=false;$('changeSettings').onclick=()=>{editing=true;saved=false;step(1)};
+async function poll(){try{state=await api('status');syncWifiState();wifiControls();$('device').textContent=state.name||state.hostname||'SENSING NODE';$('ethernetState').textContent=state.ethernet_ip==='0.0.0.0'?'Waiting for Ethernet…':'Connected · '+state.ethernet_ip;const url='http://'+state.hostname+'.local/';$('lanUrl').textContent=state.hostname+'.local';$('lanUrl').href=url;if(state.configured&&!saved&&!editing){saved=true;step(3)}$('changeSettings').hidden=state.running||state.receiver;if(saved){$('readyTitle').textContent=state.running?'Your node is sending data':state.fault?'Node needs attention':'Connecting to your receiver';$('live').textContent=state.fault?'Acquisition stopped · fault '+state.fault:state.running?state.rate.toLocaleString()+' samples/s per channel · '+state.blocks+' blocks sent':'Waiting for the receiver.';$('live').classList.toggle('good',state.running)}}catch{if(!connecting){joined='';wifiControls()}}setTimeout(poll,2000)}
+updateLink();poll();
+</script>
+</body>
+</html>
+
+

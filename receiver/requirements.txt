@@ -1,2 +1,0 @@
-cryptography>=46,<51
-bleak>=1,<3

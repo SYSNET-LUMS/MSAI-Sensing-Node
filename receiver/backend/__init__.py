@@ -1,0 +1,1 @@
+"""MSAI dashboard bridge."""

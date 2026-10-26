@@ -10,8 +10,9 @@ esptool.exe 5.3.1: official Espressif packaged tool, GPL-2.0-or-later.
 Its license is included as release/LICENSE-esptool.txt.
 Upstream source/releases: https://github.com/espressif/esptool
 
-Python receiver dependencies cryptography and bleak are installed from PyPI;
+Python BLE receiver dependency bleak is installed from PyPI;
 their upstream licenses are included with the installed distributions.
 
-Brand colours are from the MultiSensor AI public website. The HTML is locally
-implemented and uses no remote scripts, fonts or images.
+The exact MSAIxLUMS-Logo.png and colour reference were supplied by the user on
+2026-10-14. The HTML is locally implemented; all assets are embedded in firmware.
+
